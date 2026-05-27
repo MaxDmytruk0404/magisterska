@@ -1,0 +1,78 @@
+<app-header></app-header>
+
+<div class="test-page">
+
+  <!-- LEFT PANEL -->
+
+  <div class="control-panel">
+
+    <h1>Network Speed Testing</h1>
+
+    <p class="description">
+      Select the number of tests and start analysis
+    </p>
+
+    <div class="test-buttons">
+
+      <button
+        [class.active]="testCount === 10"
+        (click)="setTestCount(10)"
+      >
+        10 Tests
+      </button>
+
+      <button
+        [class.active]="testCount === 20"
+        (click)="setTestCount(20)"
+      >
+        20 Tests
+      </button>
+
+      <button
+        [class.active]="testCount === 50"
+        (click)="setTestCount(50)"
+      >
+        50 Tests
+      </button>
+
+      <button
+        [class.active]="testCount === 100"
+        (click)="setTestCount(100)"
+      >
+        100 Tests
+      </button>
+
+    </div>
+
+    <button
+      class="start-btn"
+      (click)="startTests()"
+      [disabled]="isTesting"
+    >
+      {{ isTesting ? 'Testing...' : 'Start Testing' }}
+    </button>
+
+  </div>
+
+  <!-- RIGHT PANEL -->
+
+  <div class="logs-panel">
+
+    <div class="logs-header">
+      Logs
+    </div>
+
+    <div class="logs-container">
+
+      <div
+        class="log-item"
+        *ngFor="let log of logs | async"
+      >
+        {{ log }}
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
